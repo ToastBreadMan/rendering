@@ -59,10 +59,10 @@ while run:
         y = point2d[1]
         pygame.draw.circle(display, (255, 210, 0), (x * scaleFactor + position[0], y * scaleFactor + position[1]), 3)
 
-        for i in range(4):
-            connect(i, (i+1) % 4, points2d)
-            connect(i+4, ((i+1) % 4)+4, points2d)
-            connect(i, i+4, points2d)
+    for i in range(4):
+       connect(i, (i+1) % 4, points2d)
+       connect(i+4, ((i+1) % 4)+4, points2d)
+       connect(i, i+4, points2d)
 
     pygame.display.update()
     display.fill((0,0,0))

@@ -16,6 +16,7 @@ display = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('circle')
 
 while run:
+    color = None
     rotationMatrixY = np.array([[math.cos(rotationAngle), 0, math.sin(rotationAngle)],
                                 [0, 1, 0],
                                 [-math.sin(rotationAngle), 0, math.cos(rotationAngle)]])
@@ -36,6 +37,13 @@ while run:
                                     [0, 1, 0],
                                     [-math.sin(donut), 0, math.cos(donut)]])
 
+        if donut % 2 == 0:
+            color = (0, 0, 139)
+        elif donut % 3 == 0:
+            color = (136, 0, 255)
+        else:
+            color = (255, 0, 210)
+
         for angle in range(50):
                 circle = np.array([1 * 3, 0, 0]) + np.array([1 * math.cos(angle/4), 1 * math.sin(angle/4), 0])
 
@@ -47,7 +55,7 @@ while run:
                 x = points2d[0] * scaleFactor + position[0]
                 y = points2d[1] * scaleFactor + position[1]
 
-                pygame.draw.circle(display, (255,0,210),(x,y),5)
+                pygame.draw.circle(display, color, (x, y), 5)
 
         rotationAngle += 0.001
 
